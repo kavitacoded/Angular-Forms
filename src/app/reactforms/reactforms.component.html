@@ -1,0 +1,11 @@
+<div class="container mt-5">
+    <form [formGroup]="studentForms" (submit)="studSubmit(studentForms.value)">
+    Name::
+    <input type="text" formControlName="studName" class="form-control">
+    RollMo:
+    <input type="number" formControlName="studRollNo" class="form-control">
+    Address:
+    <input type="text"formControlName="studAddress" class="form-control">
+    <button class="btn btn-warning mt-3" (click)="updateStudent()">Register</button>
+</form>
+</div>

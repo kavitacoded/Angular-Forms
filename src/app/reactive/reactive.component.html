@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <h2>Product Register</h2>
+    <form [formGroup]= "frmRegister" (submit)="RegisterClick(frmRegister.value)" >
+        <dl>
+            <h3>Product Details</h3>
+            <dt>Name</dt>
+            <dd><input type="text" formControlName ="Name"></dd>
+            <dt>Price </dt>
+            <dd><input type="number" formControlName="Price"></dd>
+        </dl>
+        <div class="mb-3">
+            <h3>Upload photo</h3>
+            <button class="btn btn-link" (click)="AddMoreClick()">Add More</button>
+            <div class="mt-2" *ngFor="let item of Photos.controls; let i=index">
+                <input type="file" formControlName="i"> 
+                <button class="btn btn-danger" (click)="RemoveClick(i)">Remove <span class="bi bi-trash"></span></button>
+            </div>
+        </div>
+        <div formGroupName ="frmVendor">
+            <h3>Vendor Details</h3>
+            <dl>
+                <dt>Vendor Name</dt>
+                <dd><input type="text" formControlName ="VendorName"></dd>
+                <dt>VendorRating</dt>
+                <dd><input type="text" formControlName="VendorRating"></dd>
+            </dl>
+        </div>
+        <button>Register</button>
+        <button class="btn btn-primary" (click)="UpdateClick()">Update</button>
+    </form>
+</div>

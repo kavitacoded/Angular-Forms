@@ -1,11 +1,19 @@
 <div class="container">
-    <form #frmregister="ngForm" (submit)="this.frmregister.value">
+    <form #frmregister="ngForm"  (submit)="this.frmregister.value">
         <h2>Register User</h2>
         <dl>
             <dt>User Name ::</dt>
-            <dd><input type="text" class="form-control" #username="ngModel" ngModel name="Username"></dd>
+            <dd><input type="text" required minlength="5" class="form-control" #Username="ngModel" ngModel name="Username"></dd>
+            <!-- <dd class="text-danger" *ngIf="(frmregister.submitted && Username.invalid)  -->
+            <!-- ||(Username.touched && Username.invalid)">username required</dd> -->
+            <dd class="text-danger" *ngIf="Username.invalid">user name
+            <div *ngIf="Username.errors?.['required']" class="text-danger">Username required</div></dd>
             <dt>Password :: </dt>
             <dd><input type="text" class="form-control" #password="ngModel" ngModel name="Password"></dd>
+            <dt>Mobile No::</dt>
+            <dd>
+                <input type="number" class="form-control" required #mob ngModel name="mob"></dd>
+                <dd class="text-danger">10 digits require</dd>
             <dt>
                 <select name="City" class="form-select" #city="ngModel" ngModel name="City">
                     <option value="">SELECT--</option>
@@ -16,6 +24,6 @@
                 </select>
             </dt>
         </dl>
-
+        <button class="btn btn-danger" [disabled]="frmregister.invalid">Submit</button>
     </form>
 </div>
